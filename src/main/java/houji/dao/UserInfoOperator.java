@@ -15,11 +15,11 @@ public class UserInfoOperator extends BaseOperator {
         return  instance;
     }
 
-    public UserInfo selectUserByName(){
+    public UserInfo selectUserByName(String name){
         SqlSession ss = ssf.openSession();
         UserInfo user = null;
         try {
-            user = ss.selectOne("houji.mapper.UserInfo.selectUserByName", "zipon");
+            user = ss.selectOne("houji.mapper.UserInfo.selectUserByName", name);
         }
         catch (Exception e){
             e.printStackTrace();

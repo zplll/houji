@@ -3,10 +3,27 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="houji.mapper.UserInfo">
-    <select id="selectUserByName" parameterType="String" resultType="houji.bean.UserInfo">
+    <resultMap id="UserResult" type="houji.bean.UserInfo">
+        <id column = "user_id" property="userId"></id>
+        <result column = "name" property="name" />
+        <result column = "passwd" property="password" />
+        <result column = "email_address" property="email" />
+        <result column = "role_id" property="roleId" />
+        <result column = "create_time" property="createTime" />
+    </resultMap>
+    <select id="selectUserByName" parameterType="String" resultMap="UserResult">
         <!--CDATA指原文代入-->
         <![CDATA[
             select * from users_info where name = #{name}
         ]]>
     </select>
+    <select id="selectUserByEmail" parameterType="String" resultMap="UserResult">
+        <!--CDATA指原文代入-->
+        <![CDATA[
+            select * from users_info where email_address = #{email}
+        ]]>
+    </select>
+
+    <select id="loginCheckByEmailOrName" resultMap="UserResult"
+
 </mapper>

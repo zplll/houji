@@ -10,8 +10,12 @@ import static org.testng.Assert.*;
 public class UserInfoOperatorTest {
     @org.testng.annotations.Test
     public void testSelectUserByName() throws Exception {
-        UserInfo user = UserInfoOperator.getInstance().selectUserByName();
-        System.out.println(user.toString());
+        UserInfo user = UserInfoOperator.getInstance().selectUserByName("zipon");
+        if(user!=null) {
+            System.out.println(user.toString());
+        }else{
+            System.out.println("没有该用户");
+        }
     }
 
 }

@@ -12,11 +12,7 @@ public class UserInfo implements Serializable {
     private String password;
     private String email;
     private String  roleId;
-
-
-    public UserInfo() {
-        super();
-    }
+    private String createTime;
 
     @Override
     public String toString() {
@@ -29,10 +25,24 @@ public class UserInfo implements Serializable {
                 .append(password).append('\"');
         sb.append(",\"email\":\"")
                 .append(email).append('\"');
-        sb.append(",\"roleId\":")
-                .append(roleId);
+        sb.append(",\"roleId\":\"")
+                .append(roleId).append('\"');
+        sb.append(",\"createTima\":\"")
+                .append(createTime).append('\"');
         sb.append('}');
         return sb.toString();
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTima) {
+        this.createTime = createTima;
+    }
+
+    public UserInfo() {
+        super();
     }
 
     public int getUserId() {
