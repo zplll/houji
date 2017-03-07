@@ -12,5 +12,5 @@ public class loginController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String
+    public void login(){}
 }
