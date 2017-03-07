@@ -1,3 +1,9 @@
 -- ---CREATE TABLE USERS_INFO
-CREATE TABLE  IF NOT EXISTS  users_info(user_id int primary key not null AUTO_INCREMENT,
-name varchar(50) unique)
+CREATE TABLE
+IF NOT EXISTS users_info (
+	user_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name VARCHAR (50) UNIQUE,
+	passwd VARCHAR(50) NOT NULL,
+	email_address VARCHAR(50) UNIQUE,
+	role_id INT NOT NULL
+)

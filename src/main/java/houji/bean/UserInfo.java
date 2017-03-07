@@ -11,10 +11,11 @@ public class UserInfo implements Serializable {
     private String name;
     private String password;
     private String email;
-    private int roleId;
+    private String  roleId;
 
 
     public UserInfo() {
+        super();
     }
 
     @Override
@@ -66,11 +67,11 @@ public class UserInfo implements Serializable {
         this.email = email;
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 }
