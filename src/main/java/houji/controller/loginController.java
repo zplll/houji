@@ -23,5 +23,7 @@ public class loginController {
         BaseResponse baseResponse = null ;
         String username = request.getParameter("username");
         String passwd = request.getParameter("password");
+
+        return baseResponse;
     }
 }

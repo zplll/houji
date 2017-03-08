@@ -24,6 +24,5 @@
         ]]>
     </select>
 
-    <select id="loginCheckByEmailOrName" resultMap="UserResult"
 
 </mapper>
