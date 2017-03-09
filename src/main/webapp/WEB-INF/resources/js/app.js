@@ -2,6 +2,8 @@
  * Created by zipon on 2017/3/8.
  */
 var app = angular.module("myapp",[]);
+
+
 app.controller('login', function($scope,$http){
 
     $scope.formData={};
@@ -9,7 +11,6 @@ app.controller('login', function($scope,$http){
     $scope.message = null;
     //提交表单
     $scope.processForm = function() {
-        $scope.buttonAbled=false;
         console.log($scope.formData);
         $http({
             method  : 'POST',
@@ -23,8 +24,10 @@ app.controller('login', function($scope,$http){
                     console.log($scope.formData);
                     $scope.message = data.message;
                     console.log($scope.message);
-
-                    $scope.buttonAbled=true;
+                //如果登陆成功就跳转到首页
+                if(data.code=="0"){
+                    window.location="index.jsp";
+                }
                 }
             );
     };
