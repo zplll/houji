@@ -1,8 +1,7 @@
 package houji.controller;
 
-import com.sun.deploy.net.HttpResponse;
-import houji.bean.BaseResponse;
-import org.springframework.http.HttpRequest;
+import com.alibaba.fastjson.JSONObject;
+import houji.dao.UserInfoOperator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,13 +16,17 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class loginController {
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",produces="text/plain;charset=UTF-8")
     @ResponseBody
-    public BaseResponse login(HttpServletRequest request, HttpServletResponse response, HttpSession session){
-        BaseResponse baseResponse = null ;
+    public String login(HttpServletRequest request, HttpServletResponse response){
+        String result;
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String passwd = request.getParameter("password");
+        session.setAttribute("username",username);
+        session.setAttribute("password",passwd);
+        result = String.valueOf(UserInfoOperator.getInstance().loginCheck(username,passwd));
 
-        return baseResponse;
+        return result;
     }
 }

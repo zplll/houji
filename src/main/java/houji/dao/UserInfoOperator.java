@@ -34,8 +34,7 @@ public class UserInfoOperator extends BaseOperator {
 
     public JSONObject loginCheck(String nameOrEmail, String password){
         SqlSession ss = ssf.openSession();
-        JSONObject result =null;
-        JSONObject data = null;
+        JSONObject result =new JSONObject();
         UserInfo user = null;
         try {
             user = ss.selectOne("houji.mapper.UserInfo.selectUserByName", nameOrEmail);

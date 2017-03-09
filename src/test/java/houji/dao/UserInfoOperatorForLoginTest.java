@@ -12,7 +12,7 @@ public class UserInfoOperatorForLoginTest {
     @Test
     public void testLoginCheck() throws Exception {
         JSONObject json = null;
-        json = UserInfoOperator.getInstance().loginCheck("zipon","123");
+        json = UserInfoOperator.getInstance().loginCheck("66@qq.com","888888");
         System.out.println(json);
     }
 
