@@ -20,12 +20,24 @@ public class loginController {
     @ResponseBody
     public String login(HttpServletRequest request, HttpServletResponse response){
         String result;
-        HttpSession session = request.getSession();
+
         String username = request.getParameter("username");
         String passwd = request.getParameter("password");
-        session.setAttribute("username",username);
-        session.setAttribute("password",passwd);
-        result = String.valueOf(UserInfoOperator.getInstance().loginCheck(username,passwd));
+
+        JSONObject json = UserInfoOperator.getInstance().loginCheck(username,passwd);
+        if(json.getString("code").equals("0")){
+
+            HttpSession session = request.getSession();
+
+            session.setAttribute("username",username);
+            session.setAttribute("password",passwd);
+
+            json.put("sessionId",session.getId());
+            json.put("username",session.getAttribute("username"));
+            json.put("password",session.getAttribute("password"));
+        }
+
+        result = String.valueOf(json);//UserInfoOperator.getInstance().loginCheck(username,passwd);
 
         return result;
     }
