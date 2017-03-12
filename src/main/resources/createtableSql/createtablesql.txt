@@ -10,3 +10,25 @@ IF NOT EXISTS users_info (
 	role_id VARCHAR(20) NOT NULL,
 	create_time DATETIME NOT NULL
 )
+----CREATE
+DROP TABLE IF EXISTS task;
+CREATE TABLE
+IF NOT EXISTS task(
+	task_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+	title VARCHAR(200) NOT NULL COMMENT '任务标题',
+	create_time DATETIME NOT NULL COMMENT '任务创建时间',
+	leader VARCHAR(20) NOT NULL COMMENT '任务总负责人',
+	customer VARCHAR(20) NOT NULL COMMENT '客户',
+	detail VARCHAR(1000) COMMENT '任务详情描述',
+	status VARCHAR(20) NOT NULL COMMENT '任务状态',
+	coding_leader VARCHAR(20) COMMENT 'coding负责人',
+	coding_price INT COMMENT 'coding价格',
+	data_entry_leader VARCHAR(20) COMMENT '数据录入负责人',
+	data_entry_price INT COMMENT '数据录入价格',
+	data_check_price INT COMMENT '数据查错程序价格，负责人为任务总负责人',
+	epi_data_price INT COMMENT '录入程序价格',
+	output_price INT COMMENT '出表程序价格',
+	bvc_price INT COMMENT 'BVC分析价格',
+	price INT COMMENT '任务总价格',
+	bonus INT COMMENT '提成'
+)
