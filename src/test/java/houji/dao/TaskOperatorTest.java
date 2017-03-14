@@ -13,7 +13,7 @@ import static org.testng.Assert.*;
 public class TaskOperatorTest {
     @Test
     public void testSelectTasksByLeader() throws Exception {
-        List<Task> tasks = TaskOperator.getInstance().selectTasksByLeader("213");
+        List<Task> tasks = TaskOperator.getInstance().selectTasksByLeader("陈丽莉");
         System.out.println(tasks);
     }
 

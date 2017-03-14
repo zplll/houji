@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
  * Created by Administrator on 2017/3/7.
@@ -20,7 +22,11 @@ public class loginController {
     @ResponseBody
     public String login(HttpServletRequest request, HttpServletResponse response){
         String result;
-
+        try {
+            request.setCharacterEncoding("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         String username = request.getParameter("username");
         String passwd = request.getParameter("password");
 

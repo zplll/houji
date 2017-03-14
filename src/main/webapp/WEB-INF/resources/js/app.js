@@ -36,6 +36,26 @@ app.controller('login', function($scope,$http){
 
 app.controller('selecttask',function ($scope,$http) {
     $scope.tasks= null;
+    $scope.columnsToString={
+        "taskId":"项目ID",
+        "title":"项目标题",
+        "createTime":"创建时间",
+        "leader":"项目负责人",
+        "detail":"备注",
+        "status":"项目状态",
+        "codingLeader":"coding负责人",
+        "codingPrice":"coding价格",
+        "dataEntryLeader":"录入负责人",
+        "dataEntryPrice":"录入价格",
+        "dataCheckPrice":"查错价格",
+        "EPIDataPrice":"EPI价格",
+        "outputPrice":"出表价格",
+        "BVCPrice":"BVC价格",
+        "price":"总价格",
+        "customer":"对接客户",
+        "bonus":"项目提成",
+
+    }
     $scope.columns = null;
     $http({
         method  : 'POST',

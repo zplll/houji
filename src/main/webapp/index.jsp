@@ -14,22 +14,34 @@
       <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
       <script src="resources/js/app.js"></script>
   </head>
-  <body>
+  <body class="container" style="width: 80%">
   <%@include file="userInfo.jsp"%>
-
-  <table class="table table-striped" ng-app = "myapp" ng-controller = "selecttask">
-      <thead>
-      <tr>
-          <td>ID</td>
-          <td  ng-repeat = "column in columns">{{column}}</td>
-      </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat = "task in tasks">
-            <td>{{$index+1}}</td>
-            <td ng-repeat="column in $parent.columns">{{task[column]}}</td>
-        </tr>
-      </tbody>
-  </table>
+  <div class="row">
+      <div class="col-md-1" style="background-color: aqua;height: 500px;">
+          <div style="margin: 10px 15px">
+              <a>我的工作台</a><br/>
+              <a>项目管理</a>
+          </div>
+      </div>
+      <div class="col-md-11">
+          <table class="table table-striped" ng-app = "myapp" ng-controller = "selecttask">
+              <thead>
+              <tr>
+                  <td>ID</td>
+                  <td  ng-repeat = "column in columns">{{columnsToString[column]}}</td>
+              </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat = "task in tasks">
+                    <td>{{$index+1}}</td>
+                    <td ng-repeat="column in $parent.columns">{{task[column]}}</td>
+                    <td style="margin: auto auto">
+                        <button class="btn btn-primary">编辑</button>
+                    </td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
   </body>
 </html>
