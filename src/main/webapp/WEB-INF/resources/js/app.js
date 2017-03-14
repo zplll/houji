@@ -32,3 +32,20 @@ app.controller('login', function($scope,$http){
             );
     };
 })
+
+
+app.controller('selecttask',function ($scope,$http) {
+    $scope.tasks= null;
+    $scope.columns = null;
+    $http({
+        method  : 'POST',
+        url     : '/task/selectbyleader',
+        data    : '',  // pass in data as strings
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+        .success(function(data){
+            $scope.columns = data.columns;
+            $scope.tasks = data.details;
+            console.log($scope.tasks);
+        });
+})

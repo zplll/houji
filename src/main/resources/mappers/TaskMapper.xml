@@ -15,6 +15,7 @@
         <result column = "coding_price" property="codingPrice" />
         <result column = "data_entry_leader" property="dataEntryLeader" />
         <result column = "data_entry_price" property="dataEntryPrice" />
+        <result column = "data_check_price" property="dataCheckPrice" />
         <result column = "epi_data_price" property="EPIDataPrice" />
         <result column = "output_price" property="outputPrice" />
         <result column = "bvc_price" property="BVCPrice" />
@@ -24,7 +25,7 @@
     <select id="selectTasksByLeader" parameterType="String" resultMap="TaskResult">
         <!--CDATA指原文代入-->
         <![CDATA[
-            select * from task where leader = #{leader}
+            select * from task where leader = #{leader} order by create_time desc
         ]]>
     </select>
 </mapper>
