@@ -18,7 +18,7 @@ public class BaseOperator {
     {
         try
         {
-            reader = Resources.getResourceAsReader("config\\mybatis\\mybatis-config.xml");
+            reader = Resources.getResourceAsReader("/config/mybatis/mybatis-config.xml");
             ssf = new SqlSessionFactoryBuilder().build(reader);
         }
         catch (IOException e)
