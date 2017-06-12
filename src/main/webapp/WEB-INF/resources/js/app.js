@@ -26,15 +26,15 @@ app.controller('login', function($scope,$http){
                     console.log($scope.message);
                 //如果登陆成功就跳转到首页
                 if(data.code=="0"){
-                    window.location="index.jsp";
+                    window.location="../../../index.jsp";
                 }
                 }
             );
     };
 })
 
-
-app.controller('selecttask',function ($scope,$http) {
+//根据登陆者查询任务
+app.controller('taskctrl',function ($scope,$http) {
     $scope.tasks= null;
     $scope.columnsToString={
         "taskId":"项目ID",
@@ -68,4 +68,7 @@ app.controller('selecttask',function ($scope,$http) {
             $scope.tasks = data.details;
             console.log($scope.tasks);
         });
+    $scope.showtask=function(){
+
+    }
 })

@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div>
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+
     <%! String username = null;%>
 
     <%

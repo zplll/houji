@@ -11,14 +11,14 @@ import java.io.Reader;
  * Created by zipon on 2017/3/7.
  */
 public class BaseOperator {
-    protected static SqlSessionFactory ssf;
+    public static SqlSessionFactory ssf;
     protected static Reader reader;
 
     static
     {
         try
         {
-            reader = Resources.getResourceAsReader("/config/mybatis/mybatis-config.xml");
+            reader = Resources.getResourceAsReader("config/mybatis/mybatis-config.xml");
             ssf = new SqlSessionFactoryBuilder().build(reader);
         }
         catch (IOException e)

@@ -8,15 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
-    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="resources/js/app.js"></script>
-    <title>首页</title>
+    <title>Title</title>
 </head>
 <body>
-<div class="container" style="background-color: rgb(174,221,129)">
-    <%@include file="userInfo.jsp"%>
+<div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <ul class="nav nav-tabs">
@@ -47,7 +42,7 @@
                 -->
             </ul>
             <div class="row clearfix">
-                <div class="col-md-1 column">
+                <div class="col-md-3 column">
                     <ul class="list-unstyled">
                         <li>
                             我的工作台
@@ -58,8 +53,8 @@
 
                     </ul>
                 </div>
-                <div class="col-md-11 column">
-                    <button type="button" class="btn btn-default btn-primary">新增项目</button>
+                <div class="col-md-9 column">
+                    <button type="button" class="btn btn-default btn-primary">按钮</button>
                     <table class="table" ng-app = "myapp" ng-controller = "taskctrl">
                         <thead>
                             <tr>

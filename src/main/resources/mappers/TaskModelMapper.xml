@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="houji.dao.TaskModelMapper" >
+  <resultMap id="BaseResultMap" type="houji.bean.model.TaskModel" >
+    <id column="task_id" property="taskId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
+    <result column="customer" property="customer" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="coding_leader" property="codingLeader" jdbcType="VARCHAR" />
+    <result column="coding_price" property="codingPrice" jdbcType="INTEGER" />
+    <result column="data_entry_leader" property="dataEntryLeader" jdbcType="VARCHAR" />
+    <result column="data_entry_price" property="dataEntryPrice" jdbcType="INTEGER" />
+    <result column="data_check_price" property="dataCheckPrice" jdbcType="INTEGER" />
+    <result column="epi_data_price" property="epiDataPrice" jdbcType="INTEGER" />
+    <result column="output_price" property="outputPrice" jdbcType="INTEGER" />
+    <result column="bvc_price" property="bvcPrice" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="bonus" property="bonus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    task_id, title, create_time, leader, customer, detail, status, coding_leader, coding_price, 
+    data_entry_leader, data_entry_price, data_check_price, epi_data_price, output_price, 
+    bvc_price, price, bonus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="houji.bean.model.TaskModel" >
+    insert into task (task_id, title, create_time, 
+      leader, customer, detail, 
+      status, coding_leader, coding_price, 
+      data_entry_leader, data_entry_price, data_check_price, 
+      epi_data_price, output_price, bvc_price, 
+      price, bonus)
+    values (#{taskId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{leader,jdbcType=VARCHAR}, #{customer,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{codingLeader,jdbcType=VARCHAR}, #{codingPrice,jdbcType=INTEGER}, 
+      #{dataEntryLeader,jdbcType=VARCHAR}, #{dataEntryPrice,jdbcType=INTEGER}, #{dataCheckPrice,jdbcType=INTEGER}, 
+      #{epiDataPrice,jdbcType=INTEGER}, #{outputPrice,jdbcType=INTEGER}, #{bvcPrice,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="houji.bean.model.TaskModel" >
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="leader != null" >
+        leader,
+      </if>
+      <if test="customer != null" >
+        customer,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="codingLeader != null" >
+        coding_leader,
+      </if>
+      <if test="codingPrice != null" >
+        coding_price,
+      </if>
+      <if test="dataEntryLeader != null" >
+        data_entry_leader,
+      </if>
+      <if test="dataEntryPrice != null" >
+        data_entry_price,
+      </if>
+      <if test="dataCheckPrice != null" >
+        data_check_price,
+      </if>
+      <if test="epiDataPrice != null" >
+        epi_data_price,
+      </if>
+      <if test="outputPrice != null" >
+        output_price,
+      </if>
+      <if test="bvcPrice != null" >
+        bvc_price,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="bonus != null" >
+        bonus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null" >
+        #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="codingLeader != null" >
+        #{codingLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="codingPrice != null" >
+        #{codingPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dataEntryLeader != null" >
+        #{dataEntryLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="dataEntryPrice != null" >
+        #{dataEntryPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dataCheckPrice != null" >
+        #{dataCheckPrice,jdbcType=INTEGER},
+      </if>
+      <if test="epiDataPrice != null" >
+        #{epiDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="outputPrice != null" >
+        #{outputPrice,jdbcType=INTEGER},
+      </if>
+      <if test="bvcPrice != null" >
+        #{bvcPrice,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        #{bonus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="houji.bean.model.TaskModel" >
+    update task
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leader != null" >
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null" >
+        customer = #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="codingLeader != null" >
+        coding_leader = #{codingLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="codingPrice != null" >
+        coding_price = #{codingPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dataEntryLeader != null" >
+        data_entry_leader = #{dataEntryLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="dataEntryPrice != null" >
+        data_entry_price = #{dataEntryPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dataCheckPrice != null" >
+        data_check_price = #{dataCheckPrice,jdbcType=INTEGER},
+      </if>
+      <if test="epiDataPrice != null" >
+        epi_data_price = #{epiDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="outputPrice != null" >
+        output_price = #{outputPrice,jdbcType=INTEGER},
+      </if>
+      <if test="bvcPrice != null" >
+        bvc_price = #{bvcPrice,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        bonus = #{bonus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="houji.bean.model.TaskModel" >
+    update task
+    set title = #{title,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      leader = #{leader,jdbcType=VARCHAR},
+      customer = #{customer,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      coding_leader = #{codingLeader,jdbcType=VARCHAR},
+      coding_price = #{codingPrice,jdbcType=INTEGER},
+      data_entry_leader = #{dataEntryLeader,jdbcType=VARCHAR},
+      data_entry_price = #{dataEntryPrice,jdbcType=INTEGER},
+      data_check_price = #{dataCheckPrice,jdbcType=INTEGER},
+      epi_data_price = #{epiDataPrice,jdbcType=INTEGER},
+      output_price = #{outputPrice,jdbcType=INTEGER},
+      bvc_price = #{bvcPrice,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      bonus = #{bonus,jdbcType=INTEGER}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+</mapper>
