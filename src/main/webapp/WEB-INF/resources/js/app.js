@@ -66,9 +66,12 @@ app.controller('taskctrl',function ($scope,$http) {
         .success(function(data){
             $scope.columns = data.columns;
             $scope.tasks = data.details;
-            console.log($scope.tasks);
         });
-    $scope.showtask=function(){
-
+    $scope.taskDetail = "1234";
+    $scope.editTask=function($event){
+        $scope.taskDetail = JSON.parse($event.target.getAttribute("value"));
+        //debug
+        console.log($scope.taskDetail.bonus);
+        //$("#editTaskModal").html(taskDetail);
     }
 })

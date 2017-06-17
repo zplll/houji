@@ -3,9 +3,11 @@ package houji.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import houji.bean.Task;
+import houji.bean.model.TaskModel;
 import houji.dao.TaskOperator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,5 +54,15 @@ public class TaskController {
         //String temp = String.valueOf(result);
         //System.out.println(temp);
         return String.valueOf(result);
+    }
+
+    @RequestMapping(value = "updatetask",produces = "text/plain;charset=UTF-8",method = RequestMethod.POST)
+    @ResponseBody
+    public String updateTask(HttpServletRequest request, HttpServletResponse response){
+        TaskModel taskModel = new TaskModel();
+        System.out.println(request.getParameter("bonus"));
+
+        return "success";
+
     }
 }

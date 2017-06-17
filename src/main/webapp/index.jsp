@@ -10,18 +10,25 @@
 <head>
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
-    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="resources/js/app.js"></script>
     <title>首页</title>
 </head>
 <body>
-<div class="container" style="background-color: rgb(174,221,129)">
+<div class="container" style="width: 1300px;" ng-app = "myapp" ng-controller = "taskctrl"><!--style="background-color: rgb(174,221,129)"-->
     <%@include file="userInfo.jsp"%>
     <div class="row clearfix">
         <div class="col-md-12 column">
             <ul class="nav nav-tabs">
                 <li class="active">
                     <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">我的工作台</a>
+                </li>
+                <li>
+                    <a href="#">个人信息</a>
                 </li>
 
                 <!--
@@ -47,39 +54,28 @@
                 -->
             </ul>
             <div class="row clearfix">
-                <div class="col-md-1 column">
-                    <ul class="list-unstyled">
-                        <li>
-                            我的工作台
-                        </li>
-                        <li>
-                             项目管理
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="col-md-11 column">
+                <div class="col-md-12 column">
                     <button type="button" class="btn btn-default btn-primary">新增项目</button>
-                    <table class="table" ng-app = "myapp" ng-controller = "taskctrl">
+                    <table class="table" > <!--ng-app = "myapp" ng-controller = "taskctrl"-->
                         <thead>
                             <tr>
-                                <td>ID</td>
+                                <!--<td>ID</td>-->
                                 <td  ng-repeat = "column in columns">{{columnsToString[column]}}</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat = "task in tasks">
-                                <td>{{$index+1}}</td>
+                                <!--<td>{{$index+1}}</td>-->
                                 <td ng-repeat="column in $parent.columns">{{task[column]}}</td>
                                 <td style="margin: auto auto">
-                                    <button name="edit_task" class="btn btn-primary" value="{{task}}" ng-click="editTask()">编辑</button>
+                                    <button name="edit_task" class="btn btn-primary" value="{{task}}" href="#modal-container-504489" data-toggle="modal" ng-click="editTask($event)">编辑</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <a id="modal-504489" href="#modal-container-504489" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+            <!--<a id="modal-504489" href="#modal-container-504489" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>-->
 
             <div class="modal fade" id="modal-container-504489" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -87,11 +83,14 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title" id="myModalLabel">
-                                标题
+                                编辑任务
                             </h4>
                         </div>
-                        <div class="modal-body">
-                            <label>task:<input type="text" /></label>
+                        <div class="modal-body" >
+                            <div ng-repeat="column in columns">
+                                <label>{{columnsToString[column]}}:</label>
+                                <input type="text" ng-model="taskDetail[column]">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
@@ -101,9 +100,29 @@
                 </div>
 
             </div>
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="navbar-inner navbar-content-center">
+                    <p class="text-muted credit" style="padding: 10px;">
+                        页脚哈!
+                    </p>
+                </div>
+            </nav>
 
         </div>
+
     </div>
+
 </div>
+<!--
+<script>
+    function editTask(i) {
+        console.log(i);
+        var taskDetail = i;
+        console.log(i);
+
+        $("#editTaskModal").html(i);
+
+    }
+</script>-->
 </body>
 </html>
