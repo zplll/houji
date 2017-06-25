@@ -11,9 +11,9 @@
                 <!-- com.mysql.jdbc.Driver -->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <!--jdbc:mysql://localhost:3306/database? -->
-                <property name="url" value="jdbc:mysql://localhost:3306/houji?"/>
+                <property name="url" value="jdbc:mysql://139.199.199.102:3306/houji?"/>
                 <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="password" value="zplll123"/>
             </dataSource>
         </environment>
     </environments>

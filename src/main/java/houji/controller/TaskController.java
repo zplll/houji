@@ -6,6 +6,7 @@ import houji.bean.Task;
 import houji.bean.model.TaskModel;
 import houji.dao.TaskOperator;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Character.getType;
+
 /**
  * Created by zipon on 2017/3/12.
  */
@@ -25,11 +28,11 @@ import java.util.List;
 public class TaskController {
     @RequestMapping(value = "selectbyleader",produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String selectTasks(HttpServletRequest request, HttpServletResponse response){
+    public String selectTasks(HttpServletRequest request){
         TypeUtils.compatibleWithJavaBean = true;
         HttpSession session = request.getSession();
         JSONObject result = new JSONObject();
-        JSONObject data = new JSONObject();
+        //JSONObject data = new JSONObject();
         String username = (String) session.getAttribute("username");
         List<Task> tasks = TaskOperator.getInstance().selectTasksByLeader(username);
         List<String> columns = new ArrayList<String>();
@@ -58,11 +61,12 @@ public class TaskController {
 
     @RequestMapping(value = "updatetask",produces = "text/plain;charset=UTF-8",method = RequestMethod.POST)
     @ResponseBody
-    public String updateTask(HttpServletRequest request, HttpServletResponse response){
-        TaskModel taskModel = new TaskModel();
-        System.out.println(request.getParameter("bonus"));
+    public String updateTask(@RequestBody TaskModel taskModel){
+        //@RequestBody
+        System.out.println(getType(taskModel.getBonus()));
+        //System.out.println(taskModel.getBonus());
 
-        return "success";
+        return "success"+taskModel.getBonus()+taskModel.getLeader();
 
     }
 }
