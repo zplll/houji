@@ -9,8 +9,8 @@ IF NOT EXISTS users_info (
 	email_address VARCHAR(50) UNIQUE,
 	role_id VARCHAR(20) NOT NULL,
 	create_time DATETIME NOT NULL
-)
-----CREATE
+);
+--  --CREATE
 DROP TABLE IF EXISTS task;
 CREATE TABLE
 IF NOT EXISTS task(
@@ -31,4 +31,4 @@ IF NOT EXISTS task(
 	bvc_price INT COMMENT 'BVC分析价格',
 	price INT COMMENT '任务总价格',
 	bonus INT COMMENT '提成'
-)
+);

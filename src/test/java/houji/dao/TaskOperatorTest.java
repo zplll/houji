@@ -1,6 +1,7 @@
 package houji.dao;
 
 import houji.bean.Task;
+import houji.bean.model.TaskModel;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import static org.testng.Assert.*;
 public class TaskOperatorTest {
     @Test
     public void testSelectTasksByLeader() throws Exception {
-        List<Task> tasks = TaskOperator.getInstance().selectTasksByLeader("陈丽莉");
+        List<TaskModel> tasks = TaskOperator.getInstance().selectTasksByLeader("陈丽莉");
         System.out.println(tasks);
     }
 

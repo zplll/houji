@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="houji.bean.model.TaskModel" >
     <id column="task_id" property="taskId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
     <result column="leader" property="leader" jdbcType="VARCHAR" />
     <result column="customer" property="customer" jdbcType="VARCHAR" />
     <result column="detail" property="detail" jdbcType="VARCHAR" />
@@ -30,6 +30,12 @@
     <include refid="Base_Column_List" />
     from task
     where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByLeader" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from task
+    where leader = #{leader,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from task

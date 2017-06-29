@@ -19,9 +19,23 @@ public class TaskModelMapperTest {
 
         TaskModelMapper itmm = ss.getMapper(TaskModelMapper.class);
         TaskModel tm=itmm.selectByPrimaryKey(1);
-
         System.out.println(tm.toString());
-
-
+        ss.close();
     }
+    @Test
+    public void testUpdateByPrimaryKey() throws Exception {
+
+        SqlSessionFactory sqlSessionFactory = BaseOperator.ssf;
+        SqlSession ss = sqlSessionFactory.openSession();
+        TaskModel taskModel = new TaskModel();
+        taskModel.setBvcPrice(89);
+        taskModel.setTaskId(1);
+
+        TaskModelMapper itmm = ss.getMapper(TaskModelMapper.class);
+        int result=itmm.updateByPrimaryKeySelective(taskModel);
+        System.out.println(result);
+        ss.commit();
+        ss.close();
+    }
+
 }

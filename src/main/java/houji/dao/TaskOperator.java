@@ -1,6 +1,7 @@
 package houji.dao;
 
 import houji.bean.Task;
+import houji.bean.model.TaskModel;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.ArrayList;
@@ -18,11 +19,12 @@ public class TaskOperator extends BaseOperator {
         return  instance;
     }
 
-    public List<Task> selectTasksByLeader(String leader){
+    public List<TaskModel> selectTasksByLeader(String leader){
         SqlSession ss = ssf.openSession();
-        List<Task>  tasks = new ArrayList<Task>();
+        List<TaskModel>  tasks = new ArrayList<TaskModel>();
         try {
-            tasks = ss.selectList("houji.mapper.Task.selectTasksByLeader", leader);
+            TaskModelMapper taskModelMapper=ss.getMapper(TaskModelMapper.class);
+            tasks =taskModelMapper.selectByLeader(leader); //ss.selectList("houji.mapper.Task.selectTasksByLeader", leader);
         }
         catch (Exception e){
             e.printStackTrace();

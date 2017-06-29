@@ -16,7 +16,7 @@
     <title>首页</title>
 </head>
 <body>
-<div class="container" style="width: 1300px;" ng-app = "myapp" ng-controller = "taskctrl"><!--style="background-color: rgb(174,221,129)"-->
+<div class="container" style="width: 100%;" ng-app = "myapp" ng-controller = "taskctrl"><!--style="background-color: rgb(174,221,129)"-->
     <%@include file="userInfo.jsp"%>
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" ng-click="updateTask()" data-dismiss="modal">保存</button>
                         </div>
                     </div>
 

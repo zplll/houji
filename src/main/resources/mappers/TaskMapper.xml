@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="houji.mapper.Task">
+<mapper namespace="houji.mapper.TaskModel">
     <resultMap id="TaskResult" type="houji.bean.Task">
         <id column = "task_id" property="taskId"></id>
         <result column = "title" property="title" />
@@ -16,9 +16,9 @@
         <result column = "data_entry_leader" property="dataEntryLeader" />
         <result column = "data_entry_price" property="dataEntryPrice" />
         <result column = "data_check_price" property="dataCheckPrice" />
-        <result column = "epi_data_price" property="EPIDataPrice" />
+        <result column = "epi_data_price" property="epiDataPrice" />
         <result column = "output_price" property="outputPrice" />
-        <result column = "bvc_price" property="BVCPrice" />
+        <result column = "bvc_price" property="bvcPrice" />
         <result column = "price" property="price" />
         <result column = "bonus" property="bonus" />
     </resultMap>

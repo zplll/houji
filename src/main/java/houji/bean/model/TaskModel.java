@@ -1,5 +1,8 @@
 package houji.bean.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TaskModel {
@@ -7,7 +10,7 @@ public class TaskModel {
 
     private String title;
 
-    private Date createTime;
+    private String createTime;
 
     private String leader;
 
@@ -53,12 +56,15 @@ public class TaskModel {
         this.title = title == null ? null : title.trim();
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(String createTime) throws ParseException {
+//        DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//        Date date = fmt.parse(createTime);
+          this.createTime = createTime;
     }
 
     public String getLeader() {

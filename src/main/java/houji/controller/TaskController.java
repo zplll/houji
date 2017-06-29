@@ -4,7 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import houji.bean.Task;
 import houji.bean.model.TaskModel;
+import houji.dao.BaseOperator;
+import houji.dao.TaskModelMapper;
 import houji.dao.TaskOperator;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,12 +38,12 @@ public class TaskController {
         JSONObject result = new JSONObject();
         //JSONObject data = new JSONObject();
         String username = (String) session.getAttribute("username");
-        List<Task> tasks = TaskOperator.getInstance().selectTasksByLeader(username);
+        List<TaskModel> tasks = TaskOperator.getInstance().selectTasksByLeader(username);
         List<String> columns = new ArrayList<String>();
 
         //利用反射取类中的属性字段
         try {
-            Class  clazz = Class.forName("houji.bean.Task");
+            Class  clazz = Class.forName("houji.bean.model.TaskModel");
             Field[] fields = clazz.getDeclaredFields();
             for(Field field:fields){
                 columns.add(field.getName());
@@ -63,10 +67,21 @@ public class TaskController {
     @ResponseBody
     public String updateTask(@RequestBody TaskModel taskModel){
         //@RequestBody
+        SqlSessionFactory sqlSessionFactory = BaseOperator.ssf;
+        SqlSession ss = sqlSessionFactory.openSession();
+
+        TaskModelMapper taskModelMapper = ss.getMapper(TaskModelMapper.class);
+        int sqlresult=taskModelMapper.updateByPrimaryKey(taskModel);
         System.out.println(getType(taskModel.getBonus()));
         //System.out.println(taskModel.getBonus());
-
-        return "success"+taskModel.getBonus()+taskModel.getLeader();
+        ss.commit();
+        JSONObject result = new JSONObject();
+        if (sqlresult==1){
+            result.put("message","success");
+        }else {
+            result.put("message","failed");
+        }
+        return String.valueOf(result);
 
     }
 }

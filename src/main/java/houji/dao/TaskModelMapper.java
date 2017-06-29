@@ -2,6 +2,8 @@ package houji.dao;
 
 import houji.bean.model.TaskModel;
 
+import java.util.List;
+
 public interface TaskModelMapper {
     int deleteByPrimaryKey(Integer taskId);
 
@@ -14,4 +16,6 @@ public interface TaskModelMapper {
     int updateByPrimaryKeySelective(TaskModel record);
 
     int updateByPrimaryKey(TaskModel record);
+
+    List<TaskModel> selectByLeader(String leader);
 }
