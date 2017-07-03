@@ -33,4 +33,18 @@ public class TaskOperator extends BaseOperator {
         }
         return  tasks;
     }
+    public List<TaskModel> selectAll(){
+        SqlSession ss = ssf.openSession();
+        List<TaskModel>  tasks = new ArrayList<TaskModel>();
+        try {
+            TaskModelMapper taskModelMapper=ss.getMapper(TaskModelMapper.class);
+            tasks =taskModelMapper.selectAll(); //ss.selectList("houji.mapper.Task.selectTasksByLeader", leader);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            ss.close();
+        }
+        return  tasks;
+    }
 }

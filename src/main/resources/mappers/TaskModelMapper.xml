@@ -25,6 +25,11 @@
     data_entry_leader, data_entry_price, data_check_price, epi_data_price, output_price, 
     bvc_price, price, bonus
   </sql>
+  <select id="selectAll" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from task
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

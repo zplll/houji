@@ -3,10 +3,12 @@ package houji.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import houji.bean.Task;
+import houji.bean.UserInfo;
 import houji.bean.model.TaskModel;
 import houji.dao.BaseOperator;
 import houji.dao.TaskModelMapper;
 import houji.dao.TaskOperator;
+import houji.dao.UserInfoOperator;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Controller;
@@ -38,8 +40,15 @@ public class TaskController {
         JSONObject result = new JSONObject();
         //JSONObject data = new JSONObject();
         String username = (String) session.getAttribute("username");
+        UserInfo user = UserInfoOperator.getInstance().selectUserByName(username);
+        String roleId = user.getRoleId();
+
         List<TaskModel> tasks = TaskOperator.getInstance().selectTasksByLeader(username);
         List<String> columns = new ArrayList<String>();
+
+        if(roleId!=null&&roleId.equals("admin")){
+            tasks = TaskOperator.getInstance().selectAll();
+        }
 
         //利用反射取类中的属性字段
         try {

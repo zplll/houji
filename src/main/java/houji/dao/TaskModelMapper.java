@@ -18,4 +18,6 @@ public interface TaskModelMapper {
     int updateByPrimaryKey(TaskModel record);
 
     List<TaskModel> selectByLeader(String leader);
+
+    List<TaskModel> selectAll();
 }
