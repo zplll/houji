@@ -55,7 +55,7 @@
             </ul>
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <button type="button" class="btn btn-default btn-primary">新增项目</button>
+                    <button name="insert_task" class="btn btn-primary"  href="#modal-container-504490" data-toggle="modal" ng-click="taskDetail=null">新增任务</button>
                     <table class="table" > <!--ng-app = "myapp" ng-controller = "taskctrl"-->
                         <thead>
                             <tr>
@@ -94,6 +94,31 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" ng-click="updateTask()" data-dismiss="modal">保存</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 新增任务  -->
+            <div class="modal fade" id="modal-container-504490" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel01">
+                                新增任务
+                            </h4>
+                        </div>
+                        <div class="modal-body" >
+                            <div ng-repeat="column in columns">
+                                <label>{{columnsToString[column]}}:</label>
+                                <input type="text" ng-model="taskDetail[column]">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" ng-click="insertTask()" data-dismiss="modal">保存</button>
                         </div>
                     </div>
 

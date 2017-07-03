@@ -20,5 +20,6 @@
             out.println(username+",欢迎你！");
         }
     %>
+    <span><a href="/logout">【退出】</a></span>
 </div>
 

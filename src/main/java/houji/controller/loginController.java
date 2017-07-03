@@ -47,4 +47,10 @@ public class loginController {
 
         return result;
     }
+    @RequestMapping(value = "/logout",produces="text/plain;charset=UTF-8")
+    @ResponseBody
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+    }
 }

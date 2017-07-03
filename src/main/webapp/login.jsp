@@ -15,8 +15,8 @@
 </head>
 <body ng-app = "myapp">
 <div  ng-controller = "login">
-    <input type="text" name="username" ng-model = "formData.username"/>
-    <input type="password" name="password" ng-model = "formData.password" />
+    <label>账号：</label><input type="text" name="username" ng-model = "formData.username"/>
+    <label>密码：</label><input type="password" name="password" ng-model = "formData.password" />
     <button ng-click = "processForm()" >登陆</button>
     <div ng-bind = "message">1</div>
 </div>

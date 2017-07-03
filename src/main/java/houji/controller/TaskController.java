@@ -91,6 +91,26 @@ public class TaskController {
             result.put("message","failed");
         }
         return String.valueOf(result);
+    }
 
+    @RequestMapping(value = "inserttask",produces = "text/plain;charset=UTF-8",method = RequestMethod.POST)
+    @ResponseBody
+    public String insertTask(@RequestBody TaskModel taskModel){
+        //@RequestBody
+        SqlSessionFactory sqlSessionFactory = BaseOperator.ssf;
+        SqlSession ss = sqlSessionFactory.openSession();
+
+        TaskModelMapper taskModelMapper = ss.getMapper(TaskModelMapper.class);
+        int sqlresult=taskModelMapper.insert(taskModel);
+        System.out.println(getType(taskModel.getBonus()));
+        //System.out.println(taskModel.getBonus());
+        ss.commit();
+        JSONObject result = new JSONObject();
+        if (sqlresult==1){
+            result.put("message","success");
+        }else {
+            result.put("message","failed");
+        }
+        return String.valueOf(result);
     }
 }
