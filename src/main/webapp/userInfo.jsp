@@ -15,7 +15,7 @@
     <%
         username = (String) session.getAttribute("username");;
         if (username==null){
-            response.sendRedirect(request.getContextPath()+"login.jsp");//"../resources/jsp/login.jsp");
+            response.sendRedirect(request.getContextPath()+"/login.jsp");//"../resources/jsp/login.jsp");
         }else {
             out.println(username+",欢迎你！");
         }
