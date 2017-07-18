@@ -111,6 +111,7 @@ app.controller('taskctrl',function ($scope,$http) {
     }
 
     $scope.insertTask=function () {
+        console.log($scope.taskDetail);
         $scope.taskDetail.taskId=parseInt($scope.taskDetail.taskId);
         $scope.taskDetail.codingPrice=parseInt($scope.taskDetail.codingPrice);
         $scope.taskDetail.dataEntryPrice=parseInt($scope.taskDetail.dataEntryPrice);
